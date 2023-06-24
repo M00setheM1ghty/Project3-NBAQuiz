@@ -1,8 +1,8 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
-import gspread
 import random
+import gspread
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -21,12 +21,13 @@ wsheet = SHEET.worksheet('NBAFinals')
 
 def play_game():
     """
-    calls the necessary functions to go through the game
+    calls the functions to go through the game
     """
     display_start_screen()
-    set_difficulty()
-    set_question_amount()
-    create_questions()
+    difficulty = set_difficulty()
+    question_amount = set_question_amount()
+    question_index = set_question_index(difficulty)
+    create_questions(question_amount, question_index)
 
 
 def display_start_screen():
@@ -59,7 +60,6 @@ def set_difficulty():
         print('Your input is not valid. Try again')
         set_difficulty()
     return difficulty
-    
 
 
 def set_question_amount():
@@ -69,21 +69,39 @@ def set_question_amount():
     length_str = input('How many questions would you like to answer? 5/10/15\n')
     question_amount = 0
     if int(length_str) == 5:
-        question_amount += 5
+        question_amount = 5
     elif int(length_str) == 10:
-        question_amount += 10
+        question_amount = 10
     elif int(length_str) == 15:
-        question_amount += 15
+        question_amount = 15
     else:
         print('Your input is not valid. Try again')    
     return question_amount
-    
 
-def create_questions():
+
+def set_question_index(difficulty):
     """
-    create question from the NBA finals spreadsheet
+    set the question index to retrieve a random line from the database
     """
-    #question_index = random.randint(2, 64)
+    question_index = 0
+    if difficulty == 'rookie':
+        question_index = random.randint(50, 64)
+    elif difficulty == "amateur":
+        question_index = random.randint(30, 64)
+    elif difficulty == "veteran":
+        question_index = random.randint(1, 64)
+    else:
+        print('Oops. something went wrong here.')
+    return question_index
+
+
+def create_questions(question_amount, question_index):
+    """
+    create questions with the supllied index and amount
+    """
+    print(question_index)
+    info_list = wsheet.row_values(question_index)
+    print(info_list) 
 
 
 play_game()
