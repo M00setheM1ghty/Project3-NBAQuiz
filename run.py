@@ -16,7 +16,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('NBAFinalsData')
 
-wsheet = SHEET.worksheet('NBAFinals')
+wsheet = SHEET.worksheet('QuestionAnswers')
+question_sheet = SHEET.worksheet('QuestionTemplates')
 
 
 def play_game():
@@ -27,7 +28,7 @@ def play_game():
     difficulty = set_difficulty()
     question_amount = set_question_amount()
     question_index = set_question_index(difficulty)
-    create_questions(question_amount, question_index)
+    create_questions(question_index)
 
 
 def display_start_screen():
@@ -66,16 +67,17 @@ def set_question_amount():
     """
     set amount of questions to be asked
     """
-    length_str = input('How many questions would you like to answer? 5/10/15\n')
+    length_str = input('How many questions would you like to answer? 4/8/12\n')
     question_amount = 0
-    if int(length_str) == 5:
-        question_amount = 5
-    elif int(length_str) == 10:
-        question_amount = 10
-    elif int(length_str) == 15:
-        question_amount = 15
+    if int(length_str) == 4:
+        question_amount = 4
+    elif int(length_str) == 8:
+        question_amount = 8
+    elif int(length_str) == 12:
+        question_amount = 12
     else:
-        print('Your input is not valid. Try again')    
+        print('Your input is not valid. Try again')
+        set_question_amount()
     return question_amount
 
 
@@ -87,21 +89,24 @@ def set_question_index(difficulty):
     if difficulty == 'rookie':
         question_index = random.randint(50, 64)
     elif difficulty == "amateur":
-        question_index = random.randint(30, 64)
-    elif difficulty == "veteran":
-        question_index = random.randint(1, 64)
+        question_index = random.randint(30, 49)
+    elif difficulty == "pro":
+        question_index = random.randint(1, 29)
     else:
         print('Oops. something went wrong here.')
     return question_index
 
 
-def create_questions(question_amount, question_index):
+def create_questions(question_index):
     """
-    create questions with the supllied index and amount
+    displaying the question with the provided list
     """
-    print(question_index)
     info_list = wsheet.row_values(question_index)
-    print(info_list) 
-
+    question_list = question_sheet.col_values(1)
+    year = int(info_list[0])
+    print(year)
+    print(info_list)
+    print(question_list)
+    
 
 play_game()
