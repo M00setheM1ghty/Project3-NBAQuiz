@@ -24,14 +24,14 @@ def play_game():
     """
     calls the functions to go through the game
     """
-    display_start_screen()
+    display_start()
     difficulty = set_difficulty()
     question_amount = set_question_amount()
     question_index = set_question_index(difficulty)
     create_questions(question_index)
 
 
-def display_start_screen():
+def display_start():
     """
     explain the game and start quiz when player is ready
     """
@@ -76,7 +76,7 @@ def set_question_amount():
     elif int(length_str) == 12:
         question_amount = 12
     else:
-        print('Your input is not valid. Try again')
+        print('Your input is not valid. Try again:')
         set_question_amount()
     return question_amount
 
@@ -91,7 +91,7 @@ def set_question_index(difficulty):
     elif difficulty == "amateur":
         question_index = random.randint(30, 49)
     elif difficulty == "pro":
-        question_index = random.randint(1, 29)
+        question_index = random.randint(2, 29)
     else:
         print('Oops. something went wrong here.')
     return question_index
@@ -99,14 +99,33 @@ def set_question_index(difficulty):
 
 def create_questions(question_index):
     """
-    displaying the question with the provided list
+    creating and displaying the question with the provided list
     """
-    info_list = wsheet.row_values(question_index)
+    answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
-    year = int(info_list[0])
+    year = answer_list[0]
     print(year)
-    print(info_list)
+    print(answer_list)
     print(question_list)
-    
+
+    for question in question_list:
+        question_count = 1
+        answer = input(f'{question}'+f' in {year}?\n')
+        print(answer_list[question_count])
+        if str(answer) == answer_list[question_count]:
+            print('Correct!')
+            question_count += 1
+            print(question_count)
+        else:
+            print('False!')
+            question_count += 1
+            print(question_count)
+# does not increment question count correctly -> compares wrong answers
+
+def display_question(args):
+    """
+    display the next question
+    """
+
 
 play_game()
