@@ -24,14 +24,60 @@ def play_game():
     """
     calls the functions to go through the game
     """
-    display_start()
-    difficulty = set_difficulty()
-    question_amount = set_question_amount()
-    question_index = set_question_index(difficulty)
-    create_questions(question_index)
+    question_amount, question_index = game_settings()
+    print(question_index)
+    print(question_amount)
+    if question_amount == "4":
+        ask_questions(question_index)
+    elif question_amount == "8":
+        ask_questions(question_index)
+        ask_questions(question_index)
+    elif question_amount == "12":
+        ask_questions(question_index)
+        ask_questions(question_index)
+        ask_questions(question_index)
+    else:
+        print('Oops. Something went wrong')
+        home_screen()
 
 
-def display_start():
+def home_screen():
+    """
+    displays options: 1: play game, 2: how to play
+    """
+    print('Welcome to my quiz game!')
+    print('x Play Game')
+    print('y Rules Explanation')
+
+    choice = input('Pick x or y:\n')
+    if choice == 'x':
+        play_game()
+    elif choice == 'y':
+        display_rules()
+    else:
+        print('You have to choose one of the two!')
+        home_screen()
+
+
+def display_rules():
+    """
+    explains the rules of the game
+    """
+    print('The rules are simple:')
+    print('You will be asked questions.')
+    print('You type your answers in.')
+    print('You gotta get as many correct as possible.')
+    print('Good luck!')
+    data_str = input('Are you ready? Y/N:\n')
+
+    if data_str.lower() == 'y':
+        print('Let\'s go!')
+    else:
+        print('Back to the homescreen!')
+        home_screen()
+
+
+def game_settings():
     """
     explain the game and start quiz when player is ready
     """
@@ -40,9 +86,13 @@ def display_start():
 
     if data_str.lower() == 'y':
         print('Let us start quizzing!')
+        difficulty = set_difficulty()
+        question_amount = set_question_amount()
+        question_index = set_question_index(difficulty)
     else:
         print('Back to the homescreen!')
-        display_start()
+        home_screen()
+    return question_amount, question_index
 
 
 def set_difficulty():
@@ -97,7 +147,7 @@ def set_question_index(difficulty):
     return question_index
 
 
-def create_questions(question_index):
+def ask_questions(question_index):
     """
     creating and displaying the questions with the provided list
     """
@@ -121,7 +171,7 @@ def create_questions(question_index):
             print(count)
         else:
             print(str(answer.lower().strip()))
-            print(answer_list[count].lower().strip())
+            print(answer_list[count].lower().replace(" ", ""))
             print(type(answer))
             print('False!')
             print(f'Correct Answer: {answer_list[count]}')
@@ -129,4 +179,4 @@ def create_questions(question_index):
 # somethin still goes wrong when asking for game result: prints false even if answer is correct
 
 
-play_game()
+home_screen()
