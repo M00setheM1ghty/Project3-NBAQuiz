@@ -42,7 +42,7 @@ def display_start():
         print('Let us start quizzing!')
     else:
         print('Back to the homescreen!')
-        display_start_screen()
+        display_start()
 
 
 def set_difficulty():
@@ -51,11 +51,11 @@ def set_difficulty():
     """
     difficulty_str = input('Which difficulty level?\nRookie/Amateur/Pro:\n')
     difficulty = ''
-    if difficulty_str.lower() == 'rookie':
+    if difficulty_str.lower().strip() == 'rookie':
         difficulty += 'rookie'
-    elif difficulty_str.lower() == 'amateur':
+    elif difficulty_str.lower().strip() == 'amateur':
         difficulty += 'amateur'
-    elif difficulty_str.lower() == 'pro':
+    elif difficulty_str.lower().strip() == 'pro':
         difficulty += 'pro'
     else:
         print('Your input is not valid. Try again')
@@ -87,11 +87,11 @@ def set_question_index(difficulty):
     """
     question_index = 0
     if difficulty == 'rookie':
-        question_index = random.randint(50, 64)
+        question_index = random.randint(40, 57)
     elif difficulty == "amateur":
-        question_index = random.randint(30, 49)
+        question_index = random.randint(21, 39)
     elif difficulty == "pro":
-        question_index = random.randint(2, 29)
+        question_index = random.randint(2, 20)
     else:
         print('Oops. something went wrong here.')
     return question_index
@@ -99,7 +99,7 @@ def set_question_index(difficulty):
 
 def create_questions(question_index):
     """
-    creating and displaying the question with the provided list
+    creating and displaying the questions with the provided list
     """
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
@@ -108,24 +108,25 @@ def create_questions(question_index):
     print(answer_list)
     print(question_list)
 
-    for question in question_list:
-        question_count = 1
-        answer = input(f'{question}'+f' in {year}?\n')
-        print(answer_list[question_count])
-        if str(answer) == answer_list[question_count]:
-            print('Correct!')
-            question_count += 1
-            print(question_count)
-        else:
-            print('False!')
-            question_count += 1
-            print(question_count)
-# does not increment question count correctly -> compares wrong answers
+    for count, question in enumerate(question_list, start=1):
+        answer = str(input(f'{question}'+f' in {year}?\n').lower().replace(" ", ""))
+        correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
-def display_question(args):
-    """
-    display the next question
-    """
+        if answer == correct_answer:
+            print(answer)
+            print(correct_answer)
+            print(type(answer))
+            print('Correct!')
+            # print(answer_list[count])
+            print(count)
+        else:
+            print(str(answer.lower().strip()))
+            print(answer_list[count].lower().strip())
+            print(type(answer))
+            print('False!')
+            print(f'Correct Answer: {answer_list[count]}')
+            print(count)
+# somethin still goes wrong when asking for game result: prints false even if answer is correct
 
 
 play_game()
