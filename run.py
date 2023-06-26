@@ -24,21 +24,26 @@ def play_game():
     """
     calls the functions to go through the game
     """
-    question_amount, question_index = game_settings()
-    print(question_index)
-    print(question_amount)
-    if question_amount == "4":
+    question_amount, question_index, difficulty = game_settings()
+    print(type(question_index))
+    print(type(question_amount))
+    if question_amount == 4:
         ask_questions(question_index)
-    elif question_amount == "8":
+    elif question_amount == 8:
         ask_questions(question_index)
+        question_index = set_question_index(difficulty)
         ask_questions(question_index)
-    elif question_amount == "12":
+    elif question_amount == 12:
         ask_questions(question_index)
+        question_index = set_question_index(difficulty)
         ask_questions(question_index)
+        question_index = set_question_index(difficulty)
         ask_questions(question_index)
     else:
         print('Oops. Something went wrong')
         home_screen()
+    track_score()
+    display_final_score(correct, wrong)
 
 
 def home_screen():
@@ -92,7 +97,7 @@ def game_settings():
     else:
         print('Back to the homescreen!')
         home_screen()
-    return question_amount, question_index
+    return question_amount, question_index, difficulty
 
 
 def set_difficulty():
@@ -163,6 +168,7 @@ def ask_questions(question_index):
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
         if answer == correct_answer:
+            track_score(answer, correct_answer)
             print(answer)
             print(correct_answer)
             print(type(answer))
@@ -170,6 +176,7 @@ def ask_questions(question_index):
             # print(answer_list[count])
             print(count)
         else:
+            track_score(answer, correct_answer)
             print(str(answer.lower().strip()))
             print(answer_list[count].lower().replace(" ", ""))
             print(type(answer))
@@ -177,6 +184,31 @@ def ask_questions(question_index):
             print(f'Correct Answer: {answer_list[count]}')
             print(count)
 # somethin still goes wrong when asking for game result: prints false even if answer is correct
+
+
+def track_score(answer, correct_answer):
+    """
+    tracks and increments correct and wrong answers
+    """
+    correct = 0
+    wrong = 0
+
+    if answer == correct_answer:
+        correct += 1
+    else:
+        wrong += 1
+
+    return correct, wrong
+
+
+def display_final_score(correct, wrong):
+    """
+    display final score and message
+    """
+    print('All question answered!')
+    print('Here is your score:')
+    print(f'Correct:{correct}\n')
+    print(f'Wrong:{wrong}\n')
 
 
 home_screen()
