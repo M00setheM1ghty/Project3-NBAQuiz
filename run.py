@@ -25,8 +25,8 @@ def play_game():
     calls the functions to go through the game
     """
     question_amount, question_index, difficulty = game_settings()
-    print(type(question_index))
-    print(type(question_amount))
+    #print(type(question_index))
+    #boprint(type(question_amount))
     if question_amount == 4:
         ask_questions(question_index)
     elif question_amount == 8:
@@ -42,8 +42,8 @@ def play_game():
     else:
         print('Oops. Something went wrong')
         home_screen()
-    track_score()
-    display_final_score(correct, wrong)
+    #correct, wrong = track_score()
+    #display_final_score(correct, wrong)
 
 
 def home_screen():
@@ -60,7 +60,7 @@ def home_screen():
     elif choice == 'y':
         display_rules()
     else:
-        print('You have to choose one of the two!')
+        print('You have to choose one!')
         home_screen()
 
 
@@ -168,21 +168,25 @@ def ask_questions(question_index):
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
         if answer == correct_answer:
-            track_score(answer, correct_answer)
+            #track_score(answer, correct_answer)
             print(answer)
             print(correct_answer)
             print(type(answer))
+            print(type(correct_answer))
             print('Correct!')
             # print(answer_list[count])
             print(count)
         else:
-            track_score(answer, correct_answer)
-            print(str(answer.lower().strip()))
-            print(answer_list[count].lower().replace(" ", ""))
+            #print(str(answer.lower().strip()))
+            #print(answer_list[count].lower().replace(" ", ""))
+            print(answer)
+            print(correct_answer)
             print(type(answer))
+            print(type(correct_answer))
             print('False!')
             print(f'Correct Answer: {answer_list[count]}')
             print(count)
+            
 # somethin still goes wrong when asking for game result: prints false even if answer is correct
 
 
