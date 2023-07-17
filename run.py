@@ -176,7 +176,7 @@ def ask_questions(question_index):
             print('Correct!')
             # print(answer_list[count])
             print(count)
-        else:
+        elif answer != correct_answer:
             #print(str(answer.lower().strip()))
             #print(answer_list[count].lower().replace(" ", ""))
             print(answer)
@@ -186,6 +186,8 @@ def ask_questions(question_index):
             print('False!')
             print(f'Correct Answer: {answer_list[count]}')
             print(count)
+        else:
+            home_screen()
             
 # somethin still goes wrong when asking for game result: prints false even if answer is correct
 
