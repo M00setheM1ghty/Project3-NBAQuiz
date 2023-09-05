@@ -2,7 +2,9 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
+import os
 import gspread
+
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -24,6 +26,7 @@ def play_game():
     """
     calls the functions to go through the game
     """
+    cls()
     question_amount, question_index, difficulty = game_settings()
     score = 0
     if question_amount == 4:
@@ -41,14 +44,16 @@ def play_game():
     else:
         print('Oops. Something went wrong')
         home_screen()
-    display_final_score()
+    display_final_score(score)
    
 
 def home_screen():
     """
     displays options: 1: play game, 2: how to play
     """
-    print('Welcome to my quiz game!')
+    cls()
+    print(' ')
+    print('Welcome to my quiz game!\n')
     print('x Play Game')
     print('y Rules Explanation')
 
@@ -66,6 +71,8 @@ def display_rules():
     """
     explains the rules of the game
     """
+    cls()
+    print(' ')
     print('The rules are simple:')
     print('You will be asked questions.')
     print('You type your answers in.')
@@ -85,6 +92,8 @@ def game_settings():
     """
     explain the game and start quiz when player is ready
     """
+    cls()
+    print(' ')
     print('Welcome!\nThis quiz will be testing your knowledge on the NBA basketball finals.')
     data_str = input('Are you ready? Y/N:\n')
 
@@ -103,6 +112,8 @@ def set_difficulty():
     """
     set game difficulty
     """
+    cls()
+    print(' ')
     difficulty_str = input('Which difficulty level?\nRookie/Amateur/Pro:\n')
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
@@ -121,6 +132,8 @@ def set_question_amount():
     """
     set amount of questions to be asked
     """
+    cls()
+    print(' ')
     try:
         length_str = int(input('How many questions would you like to answer? 4/8/12\n'))
         question_amount = 0
@@ -158,45 +171,38 @@ def ask_questions(question_index):
     """
     creating and displaying the questions with the provided list
     """
+    cls()
     correct_answer_amount = 0
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
-    print(year)
     print(answer_list)
-    print(question_list)
 
     for count, question in enumerate(question_list, start=1):
         answer = str(input(f'{question}'+f' in {year}?\n').lower().replace(" ", ""))
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
         
         if answer == correct_answer:
-            print(answer)
-            print(correct_answer)
-            print('Correct!')
+            print('Correct!\n')
             correct_answer_amount += 1
             # print(answer_list[count])
             print(count)
         elif answer != correct_answer:
-            #print(str(answer.lower().strip()))
-            #print(answer_list[count].lower().replace(" ", ""))
-            print(answer)
-            print(correct_answer)
             print('False!')
-            print(f'Correct Answer: {answer_list[count]}')
-            print(count)
+            print(f'Correct Answer: {answer_list[count]}\n')
         else:
             home_screen()
     return correct_answer_amount
+
 
 def display_final_score(score):
     """
     display final score and message
     """
+    print(' ')
     print('All question answered!')
-    print(f'Correct Answers: {score}')
-    print('/n')
-    data_str = input('Would you like to play again? Y/N:\n')
+    print(f'Correct Answers: {score}\n ')
+    data_str = input('Would you like to play again? Y/N:\n ')
 
     if data_str.lower() == 'y':
         print('Let\'s go!')
@@ -204,6 +210,13 @@ def display_final_score(score):
     else:
         print('Back to the homescreen!')
         home_screen()
+
+
+def cls():
+    """
+    clear console of old print statements
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 home_screen()
