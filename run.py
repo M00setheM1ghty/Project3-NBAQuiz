@@ -17,32 +17,31 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('NBAFinalsData')
 
 wsheet = SHEET.worksheet('QuestionAnswers')
-question_sheet = SHEET.worksheet('QuestionTemplates')
 
+question_sheet = SHEET.worksheet('QuestionTemplates')
 
 def play_game():
     """
     calls the functions to go through the game
     """
     question_amount, question_index, difficulty = game_settings()
-
+    score = 0
     if question_amount == 4:
-        ask_questions(question_index)
+        score += ask_questions(question_index)
     elif question_amount == 8:
-        ask_questions(question_index)
+        score += ask_questions(question_index)
         question_index = set_question_index(difficulty)
-        ask_questions(question_index)
+        score += ask_questions(question_index)
     elif question_amount == 12:
-        ask_questions(question_index)
+        score += ask_questions(question_index)
         question_index = set_question_index(difficulty)
-        ask_questions(question_index)
+        score += ask_questions(question_index)
         question_index = set_question_index(difficulty)
-        ask_questions(question_index)
+        score += ask_questions(question_index)
     else:
         print('Oops. Something went wrong')
         home_screen()
-    
-    #display_final_score(correct)
+    display_final_score()
    
 
 def home_screen():
@@ -159,10 +158,10 @@ def ask_questions(question_index):
     """
     creating and displaying the questions with the provided list
     """
+    correct_answer_amount = 0
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
-    correct_answer_amount = 0
     print(year)
     print(answer_list)
     print(question_list)
@@ -174,10 +173,8 @@ def ask_questions(question_index):
         if answer == correct_answer:
             print(answer)
             print(correct_answer)
-            print(type(answer))
-            print(type(correct_answer))
             print('Correct!')
-            correct_answer_amount +=1
+            correct_answer_amount += 1
             # print(answer_list[count])
             print(count)
         elif answer != correct_answer:
@@ -185,32 +182,20 @@ def ask_questions(question_index):
             #print(answer_list[count].lower().replace(" ", ""))
             print(answer)
             print(correct_answer)
-            print(type(answer))
-            print(type(correct_answer))
             print('False!')
             print(f'Correct Answer: {answer_list[count]}')
             print(count)
         else:
             home_screen()
-        
-        
-# somethin still goes wrong when asking for game result: prints false even if answer is correct
+    return correct_answer_amount
 
-
-def track_score():
-    """
-    tracks and increments correct and wrong answers
-    """
-    
-
-def display_final_score(correct):
+def display_final_score(score):
     """
     display final score and message
     """
     print('All question answered!')
-    print('Here is your score:')
-    # print(f'You got {correct} out of {question_amount}\n')
-
+    print(f'Correct Answers: {score}')
+    print('/n')
     data_str = input('Would you like to play again? Y/N:\n')
 
     if data_str.lower() == 'y':
@@ -219,3 +204,6 @@ def display_final_score(correct):
     else:
         print('Back to the homescreen!')
         home_screen()
+
+
+home_screen()
