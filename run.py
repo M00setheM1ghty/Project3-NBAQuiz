@@ -25,8 +25,7 @@ def play_game():
     calls the functions to go through the game
     """
     question_amount, question_index, difficulty = game_settings()
-    #print(type(question_index))
-    #boprint(type(question_amount))
+
     if question_amount == 4:
         ask_questions(question_index)
     elif question_amount == 8:
@@ -42,9 +41,9 @@ def play_game():
     else:
         print('Oops. Something went wrong')
         home_screen()
-    #correct, wrong = track_score()
-    #display_final_score(correct, wrong)
-
+    
+    #display_final_score(correct)
+   
 
 def home_screen():
     """
@@ -77,6 +76,7 @@ def display_rules():
 
     if data_str.lower() == 'y':
         print('Let\'s go!')
+        play_game()
     else:
         print('Back to the homescreen!')
         home_screen()
@@ -122,18 +122,21 @@ def set_question_amount():
     """
     set amount of questions to be asked
     """
-    length_str = input('How many questions would you like to answer? 4/8/12\n')
-    question_amount = 0
-    if int(length_str) == 4:
-        question_amount = 4
-    elif int(length_str) == 8:
-        question_amount = 8
-    elif int(length_str) == 12:
-        question_amount = 12
-    else:
-        print('Your input is not valid. Try again:')
-        set_question_amount()
-    return question_amount
+    try:
+        length_str = int(input('How many questions would you like to answer? 4/8/12\n'))
+        question_amount = 0
+        if length_str == 4:
+            question_amount = 4
+        elif length_str == 8:
+            question_amount = 8
+        elif length_str == 12:
+            question_amount = 12
+        else:
+            print('Your input is not valid. Try again:')
+            set_question_amount()
+        return question_amount
+    except ValueError:
+        print('You need to enter a correct value! (4,8 or 12)')
 
 
 def set_question_index(difficulty):
@@ -159,6 +162,7 @@ def ask_questions(question_index):
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
+    correct_answer_amount = 0
     print(year)
     print(answer_list)
     print(question_list)
@@ -166,14 +170,14 @@ def ask_questions(question_index):
     for count, question in enumerate(question_list, start=1):
         answer = str(input(f'{question}'+f' in {year}?\n').lower().replace(" ", ""))
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
-
+        
         if answer == correct_answer:
-            #track_score(answer, correct_answer)
             print(answer)
             print(correct_answer)
             print(type(answer))
             print(type(correct_answer))
             print('Correct!')
+            correct_answer_amount +=1
             # print(answer_list[count])
             print(count)
         elif answer != correct_answer:
@@ -188,33 +192,30 @@ def ask_questions(question_index):
             print(count)
         else:
             home_screen()
-            
+        
+        
 # somethin still goes wrong when asking for game result: prints false even if answer is correct
 
 
-def track_score(answer, correct_answer):
+def track_score():
     """
     tracks and increments correct and wrong answers
     """
-    correct = 0
-    wrong = 0
+    
 
-    if answer == correct_answer:
-        correct += 1
-    else:
-        wrong += 1
-
-    return correct, wrong
-
-
-def display_final_score(correct, wrong):
+def display_final_score(correct):
     """
     display final score and message
     """
     print('All question answered!')
     print('Here is your score:')
-    print(f'Correct:{correct}\n')
-    print(f'Wrong:{wrong}\n')
+    # print(f'You got {correct} out of {question_amount}\n')
 
+    data_str = input('Would you like to play again? Y/N:\n')
 
-home_screen()
+    if data_str.lower() == 'y':
+        print('Let\'s go!')
+        play_game()
+    else:
+        print('Back to the homescreen!')
+        home_screen()
