@@ -4,7 +4,6 @@
 import random
 import os
 import gspread
-
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -53,18 +52,37 @@ def home_screen():
     """
     cls()
     print(' ')
-    print('Welcome to my quiz game!\n')
+    print('Welcome to my NBA Finals quiz game!\n')
     print('x Play Game')
     print('y Rules Explanation')
+    print('z Study for the quiz')
+    print(' ')
 
-    choice = input('Pick x or y:\n')
+    choice = input('Pick x, y or z:\n')
     if choice == 'x':
         play_game()
     elif choice == 'y':
         display_rules()
+    elif choice == 'z':
+        display_data()
     else:
         print('You have to choose one!')
         home_screen()
+
+
+def display_data():
+    """
+    display the data questions will be asked about
+    """
+    cls()
+    print('Here you can study the material asked in the questions:')
+    print(' ')
+
+    data_rows = wsheet.get_all_values()
+    for row in data_rows:
+        print(row)
+
+    
 
 
 def display_rules():
@@ -75,9 +93,11 @@ def display_rules():
     print(' ')
     print('The rules are simple:')
     print('You will be asked questions.')
-    print('You type your answers in.')
+    print('You type your answers in. Press enter to confirm your choice.')
     print('You gotta get as many correct as possible.')
     print('Good luck!')
+    print(' ')
+    
     data_str = input('Are you ready? Y/N:\n')
 
     if data_str.lower() == 'y':
@@ -217,6 +237,27 @@ def cls():
     clear console of old print statements
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def ready_loop():
+    """
+    asks the user if he is ready to proceed and gives to options to continue
+    used to connect different parts of the quiz
+    """
+    print(' ')
+    data_str = input('Are you ready? Y/N:\n')
+
+    if data_str.lower() == 'y':
+        print('Let\'s go!')
+        play_game()
+    elif data_str.lower() == 'n':
+        print('Back to the homescreen!')
+        home_screen()
+    else:
+        while count < 3:
+            print('You have to give a valid input! (Y or N)')
+            
+            count += 1
 
 
 home_screen()
