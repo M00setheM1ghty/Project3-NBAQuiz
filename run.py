@@ -24,17 +24,20 @@ wsheet = SHEET.worksheet('QuestionAnswers')
 question_sheet = SHEET.worksheet('QuestionTemplates')
 
 
+# termcolor functions
 def print_red(x):
     """
     termcolor functions
     """
     cprint(x, 'red')
 
+
 def print_green(x):
     """
     termcolor functions
     """
     cprint(x, 'green')
+
 
 def print_blue(x):
     """
@@ -93,7 +96,7 @@ def home_screen():
         time.sleep(1)
         display_data()
     else:
-        print('You have to choose a valid input! (x,y or z)')
+        print_red('You have to choose a valid input! (x,y or z)')
         home_screen()
 
 
@@ -118,11 +121,11 @@ def display_rules():
     """
     cls()
     print(' ')
-    print('The rules are simple:')
-    print('You will be asked questions.')
-    print('You type your answers in. Press enter to confirm your choice.')
+    print_green('The rules are simple:')
+    print_red('You will be asked questions.')
+    print_blue('You type your answers in. Press enter to confirm your choice.')
     print('You gotta get as many correct as possible.')
-    print('Good luck!')
+    print_green('Good luck!')
     print(' ')
     
     ready_loop()
@@ -135,7 +138,7 @@ def game_settings():
     cls()
     print(' ')
     print_green('Welcome!')
-    print_red('This quiz will be testing your knowledge on the NBA basketball finals.')
+    print_red('This quiz will test your knowledge about the NBA.')
     data_str = input('Are you ready? Y/N:\n')
 
     if data_str.lower() == 'y':
@@ -145,7 +148,7 @@ def game_settings():
         question_amount = set_question_amount()
         question_index = set_question_index(difficulty)
     elif data_str.lower() == 'n':
-        print('Back to the homescreen!')
+        print_blue('Back to the homescreen!')
         home_screen()
     else:
         print_red('Invalid input!')
@@ -174,7 +177,7 @@ def set_difficulty():
     elif difficulty_str.lower().strip() == 'pro':
         difficulty += 'pro'
     else:
-        print('Your input is not valid. Try again')
+        print_red('Your input is not valid. Try again')
         time.sleep(2)
         set_difficulty()
     return difficulty
@@ -193,7 +196,7 @@ def set_question_amount():
         print_red('12')
         print(' ')
 
-        length_str = int(input('How many questions would you like to answer?\n'))
+        length_str = int(input('Choose a question amount to answer:\n'))
 
         question_amount = 0
         if length_str == 4:
@@ -226,6 +229,7 @@ def set_question_index(difficulty):
         question_index = random.randint(2, 20)
     else:
         print_red('Oops. something went wrong here.')
+        home_screen()
     return question_index
 
 
@@ -238,10 +242,11 @@ def ask_questions(question_index):
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
-    print(answer_list)
+    #print(answer_list)
 
     for count, question in enumerate(question_list, start=1):
-        answer = str(input(f'{question}'+f' in {year}?\n').lower().replace(" ", ""))
+        print(' ')
+        answer = str(input(f'{question}'+ f' in {year}?\n').lower().replace(" ", ""))
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
         
         if answer == correct_answer:
@@ -269,7 +274,7 @@ def display_final_score(score):
         print_blue('Let\'s go!')
         play_game()
     else:
-        print('Back to the homescreen!')
+        print_blue('Back to the homescreen!')
         home_screen()
 
 
@@ -285,7 +290,8 @@ def ready_loop():
     """
     asks the user if he is ready to proceed and gives to options to continue
     used to connect different parts of the quiz
-    prevents the user from getting stuck with wrong input by resetting to the homescreen after 3 tries
+    prevents the user from getting stuck with wrong input 
+    resets to the homescreen after 3 tries
     """
     time.sleep(1)
     count = 0
@@ -294,18 +300,16 @@ def ready_loop():
         data_str = input('Are you ready? Y/N:\n')
 
         if data_str.lower() == 'y':
-            print('Let\'s go!')
+            print_blue('Let\'s go!')
             play_game()
         elif data_str.lower() == 'n':
-            print('Back to the homescreen!')
+            print_blue('Back to the homescreen!')
             home_screen()
         else:
-            print('You have to give a valid input! (Y or N)')
+            print_red('You have to give a valid input! (Y or N)')
         count += 1
     home_screen()
     time.sleep(2)
-
-
 
 
 home_screen()
