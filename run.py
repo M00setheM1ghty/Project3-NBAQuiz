@@ -2,6 +2,7 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
+import time
 import os
 import gspread
 from google.oauth2.service_account import Credentials
@@ -42,6 +43,7 @@ def play_game():
         score += ask_questions(question_index)
     else:
         print('Oops. Something went wrong')
+        time.sleep(3)
         home_screen()
     display_final_score(score)
    
@@ -75,14 +77,14 @@ def display_data():
     display the data questions will be asked about
     """
     cls()
-    print('Here you can study the material asked in the questions:')
+    print('Here you can study the material the questions are about:')
     print(' ')
 
     data_rows = wsheet.get_all_values()
     for row in data_rows:
         print(row)
 
-    
+    ready_loop()
 
 
 def display_rules():
@@ -98,14 +100,7 @@ def display_rules():
     print('Good luck!')
     print(' ')
     
-    data_str = input('Are you ready? Y/N:\n')
-
-    if data_str.lower() == 'y':
-        print('Let\'s go!')
-        play_game()
-    else:
-        print('Back to the homescreen!')
-        home_screen()
+    ready_loop()
 
 
 def game_settings():
@@ -206,7 +201,6 @@ def ask_questions(question_index):
             print('Correct!\n')
             correct_answer_amount += 1
             # print(answer_list[count])
-            print(count)
         elif answer != correct_answer:
             print('False!')
             print(f'Correct Answer: {answer_list[count]}\n')
@@ -243,21 +237,24 @@ def ready_loop():
     """
     asks the user if he is ready to proceed and gives to options to continue
     used to connect different parts of the quiz
+    prevents the user from getting stuck with wrong input
     """
-    print(' ')
-    data_str = input('Are you ready? Y/N:\n')
+    
+    count = 0
+    while count < 3:
+        print(' ')
+        data_str = input('Are you ready? Y/N:\n')
 
-    if data_str.lower() == 'y':
-        print('Let\'s go!')
-        play_game()
-    elif data_str.lower() == 'n':
-        print('Back to the homescreen!')
-        home_screen()
-    else:
-        while count < 3:
+        if data_str.lower() == 'y':
+            print('Let\'s go!')
+            play_game()
+        elif data_str.lower() == 'n':
+            print('Back to the homescreen!')
+            home_screen()
+        else:
             print('You have to give a valid input! (Y or N)')
-            
-            count += 1
+        count += 1
+    time.sleep(2)
 
 
 home_screen()
