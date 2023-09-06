@@ -5,6 +5,7 @@ import random
 import time
 import os
 import gspread
+from termcolor import colored, cprint
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -21,6 +22,26 @@ SHEET = GSPREAD_CLIENT.open('NBAFinalsData')
 wsheet = SHEET.worksheet('QuestionAnswers')
 
 question_sheet = SHEET.worksheet('QuestionTemplates')
+
+
+def print_red(x):
+    """
+    termcolor functions
+    """
+    cprint(x, 'red')
+
+def print_green(x):
+    """
+    termcolor functions
+    """
+    cprint(x, 'green')
+
+def print_blue(x):
+    """
+    termcolor functions
+    """
+    cprint(x, 'blue')
+
 
 def play_game():
     """
@@ -42,7 +63,7 @@ def play_game():
         question_index = set_question_index(difficulty)
         score += ask_questions(question_index)
     else:
-        print('Oops. Something went wrong')
+        print_red('Oops. Something went wrong')
         time.sleep(3)
         home_screen()
     display_final_score(score)
@@ -50,25 +71,29 @@ def play_game():
 
 def home_screen():
     """
-    displays options: 1: play game, 2: how to play
+    displays options: 1: play game, 2: how to play, 3: study material
     """
     cls()
     print(' ')
     print('Welcome to my NBA Finals quiz game!\n')
-    print('x Play Game')
-    print('y Rules Explanation')
-    print('z Study for the quiz')
+    print_green('x Play Game')
+    print_red('y Rules Explanation')
+    print_blue('z Study for the quiz')
     print(' ')
 
     choice = input('Pick x, y or z:\n')
+    choice = choice.lower().replace(" ", "")
     if choice == 'x':
+        time.sleep(1)
         play_game()
     elif choice == 'y':
+        time.sleep(1)
         display_rules()
     elif choice == 'z':
+        time.sleep(1)
         display_data()
     else:
-        print('You have to choose one!')
+        print('You have to choose a valid input! (x,y or z)')
         home_screen()
 
 
@@ -109,17 +134,23 @@ def game_settings():
     """
     cls()
     print(' ')
-    print('Welcome!\nThis quiz will be testing your knowledge on the NBA basketball finals.')
+    print_green('Welcome!')
+    print_red('This quiz will be testing your knowledge on the NBA basketball finals.')
     data_str = input('Are you ready? Y/N:\n')
 
     if data_str.lower() == 'y':
-        print('Let us start quizzing!')
+        print_blue('Let us start quizzing!')
+        time.sleep(2)
         difficulty = set_difficulty()
         question_amount = set_question_amount()
         question_index = set_question_index(difficulty)
-    else:
+    elif data_str.lower() == 'n':
         print('Back to the homescreen!')
         home_screen()
+    else:
+        print_red('Invalid input!')
+        time.sleep(1)
+        play_game()
     return question_amount, question_index, difficulty
 
 
@@ -129,7 +160,12 @@ def set_difficulty():
     """
     cls()
     print(' ')
-    difficulty_str = input('Which difficulty level?\nRookie/Amateur/Pro:\n')
+    print_green('Rookie')
+    print_blue('Amateur')
+    print_red('Pro')
+    print(' ')
+    difficulty_str = input('Which difficulty level would you like to play?\n')
+    
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
         difficulty += 'rookie'
@@ -139,6 +175,7 @@ def set_difficulty():
         difficulty += 'pro'
     else:
         print('Your input is not valid. Try again')
+        time.sleep(2)
         set_difficulty()
     return difficulty
 
@@ -150,7 +187,14 @@ def set_question_amount():
     cls()
     print(' ')
     try:
-        length_str = int(input('How many questions would you like to answer? 4/8/12\n'))
+        print(' ')
+        print_green('4')
+        print_blue('8')
+        print_red('12')
+        print(' ')
+
+        length_str = int(input('How many questions would you like to answer?\n'))
+
         question_amount = 0
         if length_str == 4:
             question_amount = 4
@@ -159,17 +203,20 @@ def set_question_amount():
         elif length_str == 12:
             question_amount = 12
         else:
-            print('Your input is not valid. Try again:')
+            print_red('Your input is not valid. Try again:')
             set_question_amount()
         return question_amount
     except ValueError:
-        print('You need to enter a correct value! (4,8 or 12)')
+        print_red('You need to enter a correct value! (4,8 or 12)')
+        time.sleep(1)
+        set_question_amount()
 
 
 def set_question_index(difficulty):
     """
     set the question index to retrieve a random line from the database
     """
+    time.sleep(1)
     question_index = 0
     if difficulty == 'rookie':
         question_index = random.randint(40, 57)
@@ -178,7 +225,7 @@ def set_question_index(difficulty):
     elif difficulty == "pro":
         question_index = random.randint(2, 20)
     else:
-        print('Oops. something went wrong here.')
+        print_red('Oops. something went wrong here.')
     return question_index
 
 
@@ -198,12 +245,11 @@ def ask_questions(question_index):
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
         
         if answer == correct_answer:
-            print('Correct!\n')
+            print_green('Correct!\n')
             correct_answer_amount += 1
-            # print(answer_list[count])
         elif answer != correct_answer:
-            print('False!')
-            print(f'Correct Answer: {answer_list[count]}\n')
+            print_red('False!')
+            print_green(f'Correct Answer: {answer_list[count]}\n')
         else:
             home_screen()
     return correct_answer_amount
@@ -213,13 +259,14 @@ def display_final_score(score):
     """
     display final score and message
     """
+    time.sleep(1)
     print(' ')
-    print('All question answered!')
-    print(f'Correct Answers: {score}\n ')
+    print(colored('All question answered!', 'blue'))
+    print_green(f'Correct Answers: {score}\n ')
     data_str = input('Would you like to play again? Y/N:\n ')
 
     if data_str.lower() == 'y':
-        print('Let\'s go!')
+        print_blue('Let\'s go!')
         play_game()
     else:
         print('Back to the homescreen!')
@@ -230,6 +277,7 @@ def cls():
     """
     clear console of old print statements
     """
+    time.sleep(1)
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -237,9 +285,9 @@ def ready_loop():
     """
     asks the user if he is ready to proceed and gives to options to continue
     used to connect different parts of the quiz
-    prevents the user from getting stuck with wrong input
+    prevents the user from getting stuck with wrong input by resetting to the homescreen after 3 tries
     """
-    
+    time.sleep(1)
     count = 0
     while count < 3:
         print(' ')
@@ -254,7 +302,10 @@ def ready_loop():
         else:
             print('You have to give a valid input! (Y or N)')
         count += 1
+    home_screen()
     time.sleep(2)
+
+
 
 
 home_screen()
