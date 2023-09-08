@@ -76,7 +76,7 @@ _____________________________________________________________________________
 
 _____________________________________________________________________________
 ## Lucid chart
-![Screenshot]()  
+![Screenshot](/assets/images/program_flow.png)  
 _____________________________________________________________________________ 
 ## Project goals and target audience.  
 ### Achieved:
@@ -98,14 +98,19 @@ _____________________________________________________________________________
 
 _____________________________________________________________________________  
 ## Colour Scheme
-
+- I used termcolor to print text in different colors: red, blue, green. 
+- The standard terminal ouput(white) contrasts nicely with the rest and the black background.
+- This insures readability and proper contrast 
 _____________________________________________________________________________  
 ## User Experience (UX)   
 
 ### First-Time Visitor Goals
-   
+- Object and type of the game are obvious and easy to pursue
+- play easy and short games to get the hang of the game
 
 ### Returning Visitor Goal
+- study given material to achieve better scores
+- try harder and higher amount of questions 
 
 ## Typography
 - Standard terminal output
@@ -121,10 +126,10 @@ ____________________________________________________________________________
 - Lucidchart to provide a flowchart to explain the program
 - Google Sheets + API to acess the data necessary for the questions
 - Packages used:
-    - random
-    - time
-    - os
-    - gspread
+    - random (needed random numbers to make sure questions asked are random)
+    - time (added some sleep periods in the program to make the experience less jumpy)
+    - os (to be able to clear the terminal)
+    - gspread (access google sheets)
     - termcolor: cprint, colored   
 ____________________________________________________________________________  
 ## Testing
