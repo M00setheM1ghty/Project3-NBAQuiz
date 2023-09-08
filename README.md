@@ -36,7 +36,7 @@ Happy coding!
 ### How many questions can you get right?    
       
 
-### Link to the finished game: [PLAY]()    
+### Link to the finished game: [PLAY](https://nbaquiz-710fcd41abac.herokuapp.com/)    
 _____________________________________________________________________________
 ## Am i responsive image 
 ![Screenshot]()
@@ -164,17 +164,44 @@ ____________________________________________________________________________
 _____________________________________________________________________________  
 
 ## Deployment  
+- deployed via the heroku app
+- homepage -> create app -> choose country and app name
+- add necessary build packs anf config variables in settings:
 
+Build packs:
+1. `heroku/python`
+2. `heroku/nodejs`
+
+Config Vars:
+`PORT` `8000`
+`CREDS` `the contents of the creds.json file`
+
+- DEPLOY
 _____________________________________________________________________________  
 
 ## Credits.  
 
-### Code.  
+### Code.
+- How to clear the console of old prints:
+https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+
+- how to use termcolor
+https://towardsdatascience.com/prettify-your-terminal-text-with-termcolor-and-pyfiglet-880de83fda6b
+
+- markdown cheatsheet
+https://markdown.land/markdown-cheat-sheet
+
+- how to force pauses in the program:
+https://realpython.com/python-sleep/
 
 ### Contents  
+- dataset used for the question answers:
+https://www.kaggle.com/datasets/thedevastator/historical-nba-finals-and-mvp-results?resource=download
 
 ### Media  
 
 ### Acknowledgements
 
+The projects done by other students of my mentor helped me build the finished program and gave me good inspiration and pointers on how to execute my ideas. 
+https://github.com/CluelessBiker/mentoring/blob/main/sample-projects.md
 _____________________________________________________________________________   
