@@ -1,44 +1,13 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Thomas Baumann,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
 
 # NBA Finals Quiz
 
-### A fun little quiz testing your knowledge about basketball#s best league.   
+### A fun little quiz testing your knowledge about basketball's best league.   
 ### How many questions can you get right?    
       
 
 ### Link to the finished game: [PLAY](https://nbaquiz-710fcd41abac.herokuapp.com/)    
 _____________________________________________________________________________
-## Am i responsive image 
+## Am I responsive image 
 ![Screenshot]()
 _____________________________________________________________________________
 ## Content:
@@ -124,7 +93,7 @@ _____________________________________________________________________________
 ____________________________________________________________________________  
 ## Frameworks, Packages & Programs Used
 - Lucidchart to provide a flowchart to explain the program
-- Google Sheets + API to acess the data necessary for the questions
+- Google Sheets + API to access the data necessary for the questions
 - Packages used:
     - random (needed random numbers to make sure questions asked are random)
     - time (added some sleep periods in the program to make the experience less jumpy)
@@ -198,6 +167,8 @@ https://realpython.com/python-sleep/
 - dataset used for the question answers:
 https://www.kaggle.com/datasets/thedevastator/historical-nba-finals-and-mvp-results?resource=download
 
+- lucid chart to create the flowchart for the program
+https://www.lucidchart.com/pages/
 ### Media  
 
 ### Acknowledgements
