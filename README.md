@@ -148,6 +148,16 @@ ____________________________________________________________________________
 - ### Mobile 
 
 ### Bug testing
+|   Item    |    Bug     |   Fix    |
+|---|---|---|
+|  input fields   | crashing the program when enter was pressed directly without input | added steps in the functions to validate input and restart if necessary  |
+|  ask_questions()  |  if 8 or 12 questions are asked the questions were the same for questions 5-12  |  reset the question index when calling function again  |
+|  set_difficulty()    |  was very strict with the input -> not accepting spaces before and after the word, lower and upper case sensitive   |  converted string input to lowercase and stripped the spaces before validation   |
+|  ask_questions()  | was very strict with the input -> not accepting spaces before and after the word, lower and upper case sensitive  | converted string input to lowercase and stripped the spaces before validation  |
+|  repeating code   |  was using the same code to ask the user to continue multiple times |  refactored it into function ready_loop()  |
+|  transitions between the quiz elements   | happened way to fast -> messages were deleted to quickly -> user could not read them | added breaks with the time.sleep() function, specifically in the function cls() which clears the terminal  |
+|  ask_questions()  | comparing given answer to correct answer gave false even though input was correct  |  data in google sheets had different type of the character - somehow -> changed it to -- to be the same in answer validation  |
+|  set_question_amount() |  question amount 8 and 12 sometimes throw range parsing errors that crash the program |  added try except block that restarts the function in the error case  |
 
 ### Responsiveness and Further Testing
 
