@@ -1,8 +1,4 @@
 
-body {
-    font-family: Arial;
-}
-
 /**
 * Default styles for xterm.js
 */
@@ -159,12 +155,50 @@ header, footer {
     background-color: #000;
 }
 
-.terminal {
-    margin: auto;
+#terminal {
+    margin: 0 auto;
+    position: fixed;
+    z-index: +1;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: Arial;
+    background: url(/assets/images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#social-links {
+    background-color: #000000;
+    width: 310px;
+    font-size: 20px;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 10px;
+    color: #ffffff;
+    border: solid 2px #ffffff;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    bottom: 0%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#social-links p {
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+a {
+    margin: 5px;
 }
