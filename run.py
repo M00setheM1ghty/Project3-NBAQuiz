@@ -7,6 +7,7 @@ import os
 import gspread
 from termcolor import colored, cprint
 from google.oauth2.service_account import Credentials
+from cosmetics import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,26 +25,7 @@ wsheet = SHEET.worksheet('QuestionAnswers')
 question_sheet = SHEET.worksheet('QuestionTemplates')
 
 
-# termcolor functions
-def print_red(x):
-    """
-    termcolor functions
-    """
-    cprint(x, 'red')
 
-
-def print_green(x):
-    """
-    termcolor functions
-    """
-    cprint(x, 'green')
-
-
-def print_blue(x):
-    """
-    termcolor functions
-    """
-    cprint(x, 'blue')
 
 
 def play_game():
@@ -77,6 +59,7 @@ def home_screen():
     displays options: 1: play game, 2: how to play, 3: study material
     """
     cls()
+    art_0()
     print(' ')
     print('Welcome to my NBA Finals quiz game!\n')
     print_green('x Play Game')
@@ -105,6 +88,7 @@ def display_data():
     display the data questions will be asked about
     """
     cls()
+    art_2()
     print('Here you can study the material the questions are about:')
     print(' ')
 
@@ -120,6 +104,7 @@ def display_rules():
     explains the rules of the game
     """
     cls()
+    art_3()
     print(' ')
     print_green('The rules are simple:')
     print_red('You will be asked questions.')
@@ -136,6 +121,7 @@ def game_settings():
     explain the game and start quiz when player is ready
     """
     cls()
+    art_4()
     print(' ')
     print_green('Welcome!')
     print_red('This quiz will test your knowledge about the NBA.')
@@ -162,6 +148,7 @@ def set_difficulty():
     set game difficulty
     """
     cls()
+    art_5()
     print(' ')
     print_green('Rookie')
     print_blue('Amateur')
@@ -188,6 +175,7 @@ def set_question_amount():
     set amount of questions to be asked
     """
     cls()
+    art_6()
     print(' ')
     try:
         print(' ')
@@ -238,11 +226,11 @@ def ask_questions(question_index):
     creating and displaying the questions with the provided list
     """
     cls()
+    art_1()
     correct_answer_amount = 0
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
-    #print(answer_list)
 
     for count, question in enumerate(question_list, start=1):
         print(' ')

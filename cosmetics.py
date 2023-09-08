@@ -24,6 +24,32 @@ def print_blue(x):
 
 
 # ascii art functions
+def art_0():
+    """
+    print ascii art
+    """
+    print("""\ 
+            ..ee$$$$$ee..
+        .e$*""    $    ""*$e.       
+      z$"*.       $         $$c
+    z$"   *.      $       .P  ^$c
+   d"      *      $      z"     "b
+  $"        b     $     4%       ^$
+ d%         *     $     P         '$
+.$          'F    $    J"          $r
+4L...........b....$....$...........J$
+$F           F    $    $           4$
+4F          4F    $    4r          4P
+^$          $     $     b          $%
+ 3L        .F     $     'r        JP
+  *c       $      $      3.      z$
+   *b     J"      $       3r    dP
+    ^$c  z%       $        "c z$"
+      "*$L        $        .d$"
+         "*$ee..  $  ..ze$P"  
+""")
+
+
 def art_1():
     """
     print ascii art
@@ -43,10 +69,10 @@ _______________|_|________
 
 
 def art_2():
-     """
+    """
     print ascii art
     """
-     print("""\ 
+    print("""\ 
     o      |   __   |
       \_ O |  |__|  |
    ____/ \ |___WW___|
@@ -58,10 +84,10 @@ _______________||________________
 
 
 def art_3():
-     """
+    """
     print ascii art
     """
-     print("""\ 
+    print("""\ 
 |__  o\\
 | W    \O
 |       |\_
@@ -73,10 +99,10 @@ def art_3():
 
 
 def art_4():
-     """
+    """
     print ascii art
     """
-     print("""\ 
+    print("""\ 
 o- - -  \o          __|
    o/   /|          vv`\\
   /|     |              |
@@ -87,10 +113,10 @@ o- - -  \o          __|
 
 
 def art_5():
-     """
+    """
     print ascii art
     """
-     print("""\ 
+    print("""\ 
           <\ __
             /\>   \O___
           /       __\   
@@ -101,10 +127,10 @@ _______|_______________
 
 
 def art_6():
-     """
+    """
     print ascii art
     """
-     print("""\ 
+    print("""\ 
   |__  o\\
 | W    \O
 |       |\_         |\\
