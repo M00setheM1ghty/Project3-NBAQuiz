@@ -157,10 +157,6 @@ button {
     border-radius: 8px;
 }
 
-header, footer {
-    
-}
-
 #terminal {
     margin: 0 auto;
     position: fixed;
@@ -173,10 +169,12 @@ body {
 }
 
 #social-links {
-    
+    background: #000;
+    color:#E84610
 }
 
 #social-links p {
+    color: #E84610;
 }
 
 a {
