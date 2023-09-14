@@ -24,7 +24,7 @@ question_sheet = SHEET.worksheet('QuestionTemplates')
 
 def play_game():
     """
-    calls the functions to go through the game
+    calls the functions to go through the questions
     """
     cls()
     question_amount, question_index, difficulty = game_settings()
@@ -50,6 +50,7 @@ def play_game():
 
 def home_screen():
     """
+    starting screen
     displays options: 1: play game, 2: how to play, 3: study material
     """
     cls()
@@ -61,7 +62,7 @@ def home_screen():
     cosmetics.print_blue('    z Study for the quiz')
     print(' ')
 
-    choice = input('    Pick x, y or z:\n    ')
+    choice = input('    Pick x, y or z:\n')
     choice = choice.lower().replace(" ", "")
     if choice == 'x':
         time.sleep(1)
@@ -112,14 +113,14 @@ def display_rules():
 
 def game_settings():
     """
-    explain the game and start quiz when player is ready
+    explains the subject game and start quiz when player is ready
     """
     cls()
     cosmetics.art_4()
     print(' ')
     cosmetics.print_green('    Welcome!')
     cosmetics.print_red('    This quiz will test your knowledge about the NBA')
-    data_str = input('    Are you ready? Y/N:\n    ')
+    data_str = input('    Are you ready? Y/N:\n')
 
     if data_str.lower() == 'y':
         cosmetics.print_blue('    Let us start quizzing!')
@@ -149,7 +150,7 @@ def set_difficulty():
     cosmetics.print_red('    Pro')
     print(' ')
     difficulty_str = input(
-        '    Which difficulty level would you like to play?\n    '
+        '    Which difficulty level would you like to play?\n'
     )
 
     difficulty = ''
@@ -161,7 +162,7 @@ def set_difficulty():
         difficulty += 'pro'
     else:
         cosmetics.print_red('    Your input is not valid. Try again')
-        time.sleep(2)
+        time.sleep(1)
         set_difficulty()
     return difficulty
 
@@ -181,7 +182,7 @@ def set_question_amount():
         print(' ')
 
         length_str = int(
-            input('    Choose a question amount to answer:\n    ')
+            input('    Choose a question amount to answer:\n')
         )
 
         question_amount = 0
@@ -261,7 +262,7 @@ def display_final_score(score):
     print(' ')
     print(colored('    All question answered!', 'blue'))
     cosmetics.print_green(f'    Correct Answers: {score}\n ')
-    data_str = input('    Would you like to play again? Y/N:\n    ')
+    data_str = input('    Would you like to play again? Y/N:\n')
 
     if data_str.lower() == 'y':
         cosmetics.print_blue('    Let\'s go!')
@@ -290,7 +291,7 @@ def ready_loop():
     count = 0
     while count < 3:
         print(' ')
-        data_str = input('    Are you ready? Y/N:\n    ')
+        data_str = input('    Are you ready? Y/N:\n')
 
         if data_str.lower() == 'y':
             cosmetics.print_blue('    Let\'s go!')
