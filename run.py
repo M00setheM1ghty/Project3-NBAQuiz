@@ -6,7 +6,7 @@ import time
 import os
 import gspread
 from google.oauth2.service_account import Credentials
-from termcolor import colored, cprint
+from termcolor import colored
 import cosmetics
 
 SCOPE = [
@@ -58,13 +58,13 @@ def home_screen():
     cls()
     cosmetics.art_0()
     print(' ')
-    print('Welcome to my NBA Finals quiz game!\n')
-    cosmetics.print_green('x Play Game')
-    cosmetics.print_red('y Rules Explanation')
-    cosmetics.print_blue('z Study for the quiz')
+    print('    Welcome to my NBA Finals quiz game!\n')
+    cosmetics.print_green('    x Play Game')
+    cosmetics.print_red('    y Rules Explanation')
+    cosmetics.print_blue('    z Study for the quiz')
     print(' ')
 
-    choice = input('Pick x, y or z:\n')
+    choice = input('    Pick x, y or z:\n')
     choice = choice.lower().replace(" ", "")
     if choice == 'x':
         time.sleep(1)
@@ -76,7 +76,7 @@ def home_screen():
         time.sleep(1)
         display_data()
     else:
-        cosmetics.print_red('You have to choose a valid input! (x,y or z)')
+        cosmetics.print_red('    You have to choose a valid input! (x,y or z)')
         home_screen()
 
 
@@ -86,7 +86,7 @@ def display_data():
     """
     cls()
     cosmetics.art_2()
-    print('Here you can study the material the questions are about:')
+    print('    Here you can study the material the questions are about:')
     print(' ')
 
     data_rows = wsheet.get_all_values()
@@ -103,11 +103,11 @@ def display_rules():
     cls()
     cosmetics.art_3()
     print(' ')
-    cosmetics.print_green('The rules are simple:')
-    cosmetics.print_red('You will be asked questions.')
-    cosmetics.print_blue('You type your answers in. Press enter to confirm your choice.')
-    print('You gotta get as many correct as possible.')
-    cosmetics.print_green('Good luck!')
+    cosmetics.print_green('    The rules are simple:')
+    cosmetics.print_red('    You will be asked questions')
+    cosmetics.print_blue('    Type your answers in. Press enter to confirm')
+    print('    You gotta get as many correct as possible.')
+    cosmetics.print_green('    Good luck!')
     print(' ')
 
     ready_loop()
@@ -120,21 +120,21 @@ def game_settings():
     cls()
     cosmetics.art_4()
     print(' ')
-    cosmetics.print_green('Welcome!')
-    cosmetics.print_red('This quiz will test your knowledge about the NBA.')
-    data_str = input('Are you ready? Y/N:\n')
+    cosmetics.print_green('    Welcome!')
+    cosmetics.print_red('    This quiz will test your knowledge about the NBA')
+    data_str = input('    Are you ready? Y/N:\n')
 
     if data_str.lower() == 'y':
-        cosmetics.print_blue('Let us start quizzing!')
+        cosmetics.print_blue('    Let us start quizzing!')
         time.sleep(2)
         difficulty = set_difficulty()
         question_amount = set_question_amount()
         question_index = set_question_index(difficulty)
     elif data_str.lower() == 'n':
-        cosmetics.print_blue('Back to the homescreen!')
+        cosmetics.print_blue('    Back to the homescreen!')
         home_screen()
     else:
-        cosmetics.print_red('Invalid input!')
+        cosmetics.print_red('    Invalid input!')
         time.sleep(1)
         play_game()
     return question_amount, question_index, difficulty
@@ -147,11 +147,11 @@ def set_difficulty():
     cls()
     cosmetics.art_5()
     print(' ')
-    cosmetics.print_green('Rookie')
-    cosmetics.print_blue('Amateur')
-    cosmetics.print_red('Pro')
+    cosmetics.print_green('    Rookie')
+    cosmetics.print_blue('    Amateur')
+    cosmetics.print_red('    Pro')
     print(' ')
-    difficulty_str = input('Which difficulty level would you like to play?\n')
+    difficulty_str = input('    Which difficulty level would you like to play?\n')
 
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
@@ -161,7 +161,7 @@ def set_difficulty():
     elif difficulty_str.lower().strip() == 'pro':
         difficulty += 'pro'
     else:
-        cosmetics.print_red('Your input is not valid. Try again')
+        cosmetics.print_red('    Your input is not valid. Try again')
         time.sleep(2)
         set_difficulty()
     return difficulty
@@ -181,7 +181,7 @@ def set_question_amount():
         cosmetics.print_red('    12')
         print(' ')
 
-        length_str = int(input('Choose a question amount to answer:\n'))
+        length_str = int(input('    Choose a question amount to answer:\n'))
 
         question_amount = 0
         if length_str == 4:
@@ -191,11 +191,11 @@ def set_question_amount():
         elif length_str == 12:
             question_amount = 12
         else:
-            cosmetics.print_red('Your input is not valid. Try again:')
+            cosmetics.print_red('    Your input is not valid. Try again:')
             set_question_amount()
         return question_amount
     except ValueError:
-        cosmetics.print_red('You need to enter a correct value! (4,8 or 12)')
+        cosmetics.print_red('    You need to enter a correct value! (4,8 or 12)')
         time.sleep(1)
         set_question_amount()
 
@@ -213,7 +213,7 @@ def set_question_index(difficulty):
     elif difficulty == "pro":
         question_index = random.randint(2, 20)
     else:
-        cosmetics.print_red('Oops. something went wrong here.')
+        cosmetics.print_red('    Oops. something went wrong here.')
         home_screen()
     return question_index
 
@@ -235,11 +235,11 @@ def ask_questions(question_index):
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
         if answer == correct_answer:
-            cosmetics.print_green('Correct!\n')
+            cosmetics.print_green('    Correct!\n')
             correct_answer_amount += 1
         elif answer != correct_answer:
-            cosmetics.print_red('False!')
-            cosmetics.print_green(f'Correct Answer: {answer_list[count]}\n')
+            cosmetics.print_red('    False!')
+            cosmetics.print_green(f'    Correct Answer: {answer_list[count]}\n')
         else:
             home_screen()
     return correct_answer_amount
@@ -251,15 +251,15 @@ def display_final_score(score):
     """
     time.sleep(1)
     print(' ')
-    print(colored('All question answered!', 'blue'))
-    cosmetics.print_green(f'Correct Answers: {score}\n ')
-    data_str = input('Would you like to play again? Y/N:\n ')
+    print(colored('    All question answered!', 'blue'))
+    cosmetics.print_green(f'    Correct Answers: {score}\n ')
+    data_str = input('    Would you like to play again? Y/N:\n ')
 
     if data_str.lower() == 'y':
-        cosmetics.print_blue('Let\'s go!')
+        cosmetics.print_blue('    Let\'s go!')
         play_game()
     else:
-        cosmetics.print_blue('Back to the homescreen!')
+        cosmetics.print_blue('    Back to the homescreen!')
         home_screen()
 
 
@@ -282,16 +282,16 @@ def ready_loop():
     count = 0
     while count < 3:
         print(' ')
-        data_str = input('Are you ready? Y/N:\n')
+        data_str = input('    Are you ready? Y/N:\n')
 
         if data_str.lower() == 'y':
-            cosmetics.print_blue('Let\'s go!')
+            cosmetics.print_blue('    Let\'s go!')
             play_game()
         elif data_str.lower() == 'n':
-            cosmetics.print_blue('Back to the homescreen!')
+            cosmetics.print_blue('    Back to the homescreen!')
             home_screen()
         else:
-            cosmetics.print_red('You have to give a valid input! (Y or N)')
+            cosmetics.print_red('    You have to give a valid input! (Y or N)')
         count += 1
     home_screen()
     time.sleep(2)
