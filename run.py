@@ -5,8 +5,8 @@ import random
 import time
 import os
 import gspread
-from termcolor import colored, cprint
 from google.oauth2.service_account import Credentials
+from termcolor import colored, cprint
 from cosmetics import *
 
 SCOPE = [
@@ -23,9 +23,6 @@ SHEET = GSPREAD_CLIENT.open('NBAFinalsData')
 wsheet = SHEET.worksheet('QuestionAnswers')
 
 question_sheet = SHEET.worksheet('QuestionTemplates')
-
-
-
 
 
 def play_game():
@@ -52,7 +49,7 @@ def play_game():
         time.sleep(3)
         home_screen()
     display_final_score(score)
-   
+
 
 def home_screen():
     """
@@ -112,7 +109,7 @@ def display_rules():
     print('You gotta get as many correct as possible.')
     print_green('Good luck!')
     print(' ')
-    
+
     ready_loop()
 
 
@@ -155,7 +152,7 @@ def set_difficulty():
     print_red('Pro')
     print(' ')
     difficulty_str = input('Which difficulty level would you like to play?\n')
-    
+
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
         difficulty += 'rookie'
@@ -234,9 +231,9 @@ def ask_questions(question_index):
 
     for count, question in enumerate(question_list, start=1):
         print(' ')
-        answer = str(input(f'{question}'+ f' in {year}?\n').lower().replace(" ", ""))
+        answer = str(input(f'{question}' + f' in {year}?\n').lower().replace(" ", ""))
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
-        
+
         if answer == correct_answer:
             print_green('Correct!\n')
             correct_answer_amount += 1
@@ -278,7 +275,7 @@ def ready_loop():
     """
     asks the user if he is ready to proceed and gives to options to continue
     used to connect different parts of the quiz
-    prevents the user from getting stuck with wrong input 
+    prevents the user from getting stuck with wrong input
     resets to the homescreen after 3 tries
     """
     time.sleep(1)
