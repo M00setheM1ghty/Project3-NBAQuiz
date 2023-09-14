@@ -106,10 +106,6 @@ ____________________________________________________________________________
 
 ### W3 HTML Checker 
 
-### W3 CSS Checker
-
-### Contrast Checker
-
 ### Bug testing
 |   Item    |    Bug     |   Fix    |
 |---|---|---|
