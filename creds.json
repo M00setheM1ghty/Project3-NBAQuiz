@@ -1,13 +1,1 @@
-{
-  "type": "service_account",
-  "project_id": "milestone3nba",
-  "private_key_id": "bb6fb6e85d27033c23bf7e3abb4187dcd7a2043c",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCd6JonH7hyI8pY\nhZRAu5rvljAhLcZ8YpkqRKXCvYWikjIlJLGgoOLpFoAqy0BseDPrgFWXhrYwZVr0\n4bt/1Y5tjohDSFo3pz47ArXzdEClSNqKlniTcTc1p4W5IB94IpWfQfOnnjiWJbMJ\nXvZBvg2mJYvTZ6cIFZhRbpA8xJOusBXnw2LJSuRmYP1NLy9wSk8A8Tk2q2Bqa5sP\nEpeCemlRSEuO09g9Ajq8vvoe/HTq235QCZNLq1zyEX3oAXMwsJ7s+8RBriiYWNt4\nWpM+Xc9LGjLUmJdfZUEWTQf9eEhAoIX0/5mW9lIYz3pwmXANkeAW8PjCYVwfq0M7\nk4W/0bapAgMBAAECggEAAyULRHblTedodtmKkaNBOBiNP7mBMvlyTbnwjiYHLjnL\n0PSmRL0BGXC9OTAmib9EE283fsBfSpJXwyA0UBARJjcY/7QGN4ad+EyUkiZd+8/g\nkEywvO9bt0N6J+0CMdRVSmBktirlVOVbASqe7Cfyu1Z5Yb3cjcGDI/4E1jz49VkP\npJg8xCNb8VFQ5GR2OvVq9kuwD49Ja43OIityg5OcFR4UUOSqsF4h3ExJAU7EazLp\nOKSGwD6BaMhSS37H7p/TUEdSZN+RBJpMea+Dmg7NS/XSGqsetM1VL+BzXVv0RZm7\nUCHRkDnCIBhJL0nN0YrTpOh15IX08/bMtDzI4BAnIQKBgQDaitTbBaqIMBR1Uy4F\nofe+OuU/J8NHqpTxZ90OZJZ9aRfIqrGsW87fOxhNNvu8mI1ipa4i1JnTDLZYg8Jn\nkVzZH7U5em7PCxVjyPVPbySdVr51TpKfnsOfOw1I5nR34aIN4iTpk87aal9f10Qm\nFY+VLjkPuk1giA5TB5wMR4zimQKBgQC4+UsecsekaIA2ti0sjEfQCbKU/BO7ups0\nGRNew56IdyXxOAdNipkVQrftBJs4E/vSI68MPYIYrEgENdA8tPXt0Jpj3SeoNmCb\n/CtQ5d4krEz6Ph8KSzNuA1+Dk8eZz+egC6ZEtjYtornMyvrdQW1mm5zK/rZRYeXf\nJA05f0kOkQKBgQCOL4tjYKFd7+Ivn0mvEn0MQGdMmsM7ymkTUx8IsTsUJx75SM1G\nNYk3xcv+2MoaHyrFxsOwF6BpJrkwh7EhDvtYrH+NAPI9NJnbDTFFWCt7TqelzNQq\nk/H0lEgFaSLXqG52F+8qJSeNBW49/eFx4c9EIQmxCOY06vBe5vGJL7gi6QKBgQCi\nMaZWypqYZTGXx+KQn2kQ2JAI54h+IkCZTCuZ+rn2O1O/0jtFGPTmmZwhbtqUL6Gu\nP6/scbqz281CM9WmhZ7nqvTWAEQX0aag4FszEnzZd2QAQZyCMDKmkrqb62coTg9y\nXQSsV4HmPjvhgVK70/UT9ftkXDiN3+Pq5/fYpO3woQKBgGIHAFvVBJDXURHYRY/e\nE4qcnm+V/hWAhRBXpw78Xp+3xWygCYVHBhLBfOILeayDgIUQX/FM7ssDdMqdxnq2\nt+4o6MDaUJqa+foBSNw12cM2S1M/hnutrkLuEha1T+8MblHAGngg+0+UAZLky9RK\nDeJLzikWj+oOp94hiu2FXWv4\n-----END PRIVATE KEY-----\n",
-  "client_email": "tom-679@milestone3nba.iam.gserviceaccount.com",
-  "client_id": "115066942662158088610",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tom-679%40milestone3nba.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}
+
