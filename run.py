@@ -65,13 +65,13 @@ def home_screen():
     choice = input('    Pick x, y or z:\n')
     choice = choice.lower().replace(" ", "")
     if choice == 'x':
-        time.sleep(1)
+        time.sleep(0.5)
         play_game()
     elif choice == 'y':
-        time.sleep(1)
+        time.sleep(0.5)
         display_rules()
     elif choice == 'z':
-        time.sleep(1)
+        time.sleep(0.5)
         display_data()
     else:
         cosmetics.print_red('    You have to choose a valid input! (x,y or z)')
