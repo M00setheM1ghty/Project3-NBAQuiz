@@ -12,7 +12,7 @@ _____________________________________________________________________________
     - [Lucid Chart](#lucid-chart)
     - [Project Goals and Audience](#project-goals-and-target-audience)
 - ### Design and UX
-    - [Design and Features](#design-and-features)
+    - [How to play](#how-to-play)
     - [Colour Scheme](#colour-scheme)
     - [User Experience](#user-experience-ux)
         - [First-time Visitor](#first-time-visitor-goals)
@@ -42,7 +42,7 @@ _____________________________________________________________________________
 
 _____________________________________________________________________________
 ## Lucid chart
-![Screenshot](/assets/images/program_flow.png)  
+![Screenshot](/images/lucidchart.png)  
 _____________________________________________________________________________ 
 ## Project goals and target audience.  
 ### Achieved:
@@ -60,10 +60,11 @@ _____________________________________________________________________________
 - I suppose it is more fun for sports or specifically for people interested in basketball.   
 _____________________________________________________________________________ 
 ### Design and UX
-## Design and Features:   
-- choose the given options to navigate through the quiz
-- different difficulty levels
-- 3 different game lenghts to choose froms
+## How to play:   
+- choose between the given options to navigate through the quiz
+- try different difficulty levels
+- 3 different game lenghts to choose from
+- answer the questions and see how many you can get correct
 _____________________________________________________________________________  
 ## Colour Scheme
 - I used termcolor to print text in different colors: red, blue, green. 
@@ -104,7 +105,13 @@ ____________________________________________________________________________
 
 ### PEP8
 
+- no errors found with the pep8 linter:\
+![Screenshot](/images/pep8P3.png)
+
 ### W3 HTML Checker 
+
+- no issues in the W3 html validator\
+![Screenshot](/images/w3-validation-p3.png)
 
 ### Bug testing
 |   Item    |    Bug     |   Fix    |
@@ -131,8 +138,15 @@ ____________________________________________________________________________
 - runs in chrome, edge and firefox browser
 _____________________________________________________________________________  
 
-## Deployment  
-- deployed via the heroku app
+## Deployment
+### How to use the provided template
+- fork the p3-template provided by CodeInstitute: https://github.com/Code-Institute-Org/p3-template \
+![Screenshot](/images/usetemplateP3.png)
+- give the repo a name and click "Create repository":\
+![Screenshot](/images/newrepoP3.png)
+
+### Deploying the App in Heroku
+- deployed via the heroku platform
 - homepage -> create app -> choose country and app name
 - add necessary build packs and config variables in settings:
 
@@ -144,7 +158,7 @@ Config Vars:
 `PORT` `8000`
 `CREDS` `the contents of the creds.json file`
 
-- DEPLOY
+- under deploy at the bottom of the page click: DEPLOY
 _____________________________________________________________________________  
 
 ## Credits.  
@@ -168,7 +182,10 @@ https://www.kaggle.com/datasets/thedevastator/historical-nba-finals-and-mvp-resu
 
 - lucid chart to create the flowchart for the program
 https://www.lucidchart.com/pages/
+
 ### Media  
+- ASCII art provided by:
+https://www.asciiart.eu/sports-and-outdoors/basketball
 
 ### Acknowledgements
 
