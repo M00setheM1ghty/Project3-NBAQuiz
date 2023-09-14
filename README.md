@@ -7,9 +7,6 @@
 
 ### Link to the finished game: https://nbaquiz-710fcd41abac.herokuapp.com/
 _____________________________________________________________________________
-## Am I responsive image 
-![Screenshot]()
-_____________________________________________________________________________
 ## Content:
 - ### Wireframe and project goals 
     - [Lucid Chart](#lucid-chart)
@@ -64,7 +61,9 @@ _____________________________________________________________________________
 _____________________________________________________________________________ 
 ### Design and UX
 ## Design and Features:   
-
+- choose the given options to navigate through the quiz
+- different difficulty levels
+- 3 different game lenghts to choose froms
 _____________________________________________________________________________  
 ## Colour Scheme
 - I used termcolor to print text in different colors: red, blue, green. 
@@ -111,11 +110,6 @@ ____________________________________________________________________________
 
 ### Contrast Checker
 
-### Lighthouse
-- ### Desktop
-
-- ### Mobile 
-
 ### Bug testing
 |   Item    |    Bug     |   Fix    |
 |---|---|---|
@@ -128,14 +122,23 @@ ____________________________________________________________________________
 |  ask_questions()  | comparing given answer to correct answer gave false even though input was correct  |  data in google sheets had different type of the character - somehow -> changed it to -- to be the same in answer validation  |
 |  set_question_amount() |  question amount 8 and 12 sometimes throw range parsing errors that crash the program |  added try except block that restarts the function in the error case  |
 
+### Unfixed Bugs
+
+ - Sometimes when choosing the question amount in game_settings() the program throws a parsing Error. I could not find the reason why. Also it rarely happens. I go around it by having a loop in place that restarts the game at a specific point if it crashes.  
+
 ### Responsiveness and Further Testing
 
+## Am I responsive image 
+![Screenshot](/images/amiresponsiveP3.png)
+
+- scales fine on different screen sizes
+- runs in chrome, edge and firefox browser
 _____________________________________________________________________________  
 
 ## Deployment  
 - deployed via the heroku app
 - homepage -> create app -> choose country and app name
-- add necessary build packs anf config variables in settings:
+- add necessary build packs and config variables in settings:
 
 Build packs:
 1. `heroku/python`
