@@ -1,6 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
 import time
 import os
@@ -151,7 +148,9 @@ def set_difficulty():
     cosmetics.print_blue('    Amateur')
     cosmetics.print_red('    Pro')
     print(' ')
-    difficulty_str = input('    Which difficulty level would you like to play?\n    ')
+    difficulty_str = input(
+        '    Which difficulty level would you like to play?\n    '
+    )
 
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
@@ -181,7 +180,9 @@ def set_question_amount():
         cosmetics.print_red('    12')
         print(' ')
 
-        length_str = int(input('    Choose a question amount to answer:\n    '))
+        length_str = int(
+            input('    Choose a question amount to answer:\n    ')
+        )
 
         question_amount = 0
         if length_str == 4:
@@ -195,7 +196,9 @@ def set_question_amount():
             set_question_amount()
         return question_amount
     except ValueError:
-        cosmetics.print_red('    You need to enter a correct value! (4,8 or 12)')
+        cosmetics.print_red(
+            '    You need to enter a correct value! (4,8 or 12)'
+        )
         time.sleep(1)
         set_question_amount()
 
@@ -231,7 +234,10 @@ def ask_questions(question_index):
 
     for count, question in enumerate(question_list, start=1):
         print(' ')
-        answer = str(input(f'    {question}' + f' in {year}?\n    ').lower().replace(" ", ""))
+        answer = str(input(
+            f'    {question}' +
+            f' in {year}?\n    ').lower().replace(" ", "")
+        )
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
         if answer == correct_answer:
@@ -239,7 +245,9 @@ def ask_questions(question_index):
             correct_answer_amount += 1
         elif answer != correct_answer:
             cosmetics.print_red('    False!')
-            cosmetics.print_green(f'    Correct Answer: {answer_list[count]}\n')
+            cosmetics.print_green(
+                f'    Correct Answer: {answer_list[count]}\n'
+            )
         else:
             home_screen()
     return correct_answer_amount
