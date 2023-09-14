@@ -179,9 +179,9 @@ def set_question_amount():
     print(' ')
     try:
         print(' ')
-        print_green('4')
-        print_blue('8')
-        print_red('12')
+        print_green('    4')
+        print_blue('    8')
+        print_red('    12')
         print(' ')
 
         length_str = int(input('Choose a question amount to answer:\n'))

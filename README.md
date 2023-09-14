@@ -5,7 +5,7 @@
 ### How many questions can you get right?    
       
 
-### Link to the finished game: [PLAY](https://nbaquiz-710fcd41abac.herokuapp.com/)    
+### Link to the finished game: https://nbaquiz-710fcd41abac.herokuapp.com/
 _____________________________________________________________________________
 ## Am I responsive image 
 ![Screenshot]()
