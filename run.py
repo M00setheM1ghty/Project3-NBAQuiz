@@ -64,7 +64,7 @@ def home_screen():
     cosmetics.print_blue('    z Study for the quiz')
     print(' ')
 
-    choice = input('    Pick x, y or z:\n')
+    choice = input('    Pick x, y or z:\n    ')
     choice = choice.lower().replace(" ", "")
     if choice == 'x':
         time.sleep(1)
@@ -122,7 +122,7 @@ def game_settings():
     print(' ')
     cosmetics.print_green('    Welcome!')
     cosmetics.print_red('    This quiz will test your knowledge about the NBA')
-    data_str = input('    Are you ready? Y/N:\n')
+    data_str = input('    Are you ready? Y/N:\n    ')
 
     if data_str.lower() == 'y':
         cosmetics.print_blue('    Let us start quizzing!')
@@ -151,7 +151,7 @@ def set_difficulty():
     cosmetics.print_blue('    Amateur')
     cosmetics.print_red('    Pro')
     print(' ')
-    difficulty_str = input('    Which difficulty level would you like to play?\n')
+    difficulty_str = input('    Which difficulty level would you like to play?\n    ')
 
     difficulty = ''
     if difficulty_str.lower().strip() == 'rookie':
@@ -181,7 +181,7 @@ def set_question_amount():
         cosmetics.print_red('    12')
         print(' ')
 
-        length_str = int(input('    Choose a question amount to answer:\n'))
+        length_str = int(input('    Choose a question amount to answer:\n    '))
 
         question_amount = 0
         if length_str == 4:
@@ -231,7 +231,7 @@ def ask_questions(question_index):
 
     for count, question in enumerate(question_list, start=1):
         print(' ')
-        answer = str(input(f'{question}' + f' in {year}?\n').lower().replace(" ", ""))
+        answer = str(input(f'    {question}' + f' in {year}?\n    ').lower().replace(" ", ""))
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
         if answer == correct_answer:
@@ -253,7 +253,7 @@ def display_final_score(score):
     print(' ')
     print(colored('    All question answered!', 'blue'))
     cosmetics.print_green(f'    Correct Answers: {score}\n ')
-    data_str = input('    Would you like to play again? Y/N:\n ')
+    data_str = input('    Would you like to play again? Y/N:\n    ')
 
     if data_str.lower() == 'y':
         cosmetics.print_blue('    Let\'s go!')
@@ -282,7 +282,7 @@ def ready_loop():
     count = 0
     while count < 3:
         print(' ')
-        data_str = input('    Are you ready? Y/N:\n')
+        data_str = input('    Are you ready? Y/N:\n    ')
 
         if data_str.lower() == 'y':
             cosmetics.print_blue('    Let\'s go!')
