@@ -276,7 +276,7 @@ def cls():
     """
     clear console of old print statements
     """
-    time.sleep(1)
+    time.sleep(0.5)
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -287,7 +287,7 @@ def ready_loop():
     prevents the user from getting stuck with wrong input
     resets to the homescreen after 3 tries
     """
-    time.sleep(1)
+    time.sleep(0.5)
     count = 0
     while count < 3:
         print(' ')
@@ -303,7 +303,7 @@ def ready_loop():
             cosmetics.print_red('    You have to give a valid input! (Y or N)')
         count += 1
     home_screen()
-    time.sleep(2)
+    time.sleep(1)
 
 
 home_screen()
