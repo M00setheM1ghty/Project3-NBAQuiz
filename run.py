@@ -237,7 +237,7 @@ def ask_questions(question_index):
         print(' ')
         answer = str(input(
             f'    {question}' +
-            f' in {year}?\n    ').lower().replace(" ", "")
+            f' in {year}?\n').lower().replace(" ", "")
         )
         correct_answer = str(answer_list[count].lower().replace(" ", ""))
 
@@ -258,7 +258,8 @@ def display_final_score(score):
     """
     display final score and message
     """
-    time.sleep(1)
+    cls()
+    time.sleep(0.5)
     print(' ')
     print(colored('    All question answered!', 'blue'))
     cosmetics.print_green(f'    Correct Answers: {score}\n ')
