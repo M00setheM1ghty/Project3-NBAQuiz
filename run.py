@@ -340,9 +340,10 @@ def ready_loop():
             home_screen()
         else:
             cosmetics.print_red('    You have to give a valid input! (Y or N)')
+            cls()
         count += 1
     home_screen()
-    time.sleep(1)
+    time.sleep(0.5)
 
 
 home_screen()
