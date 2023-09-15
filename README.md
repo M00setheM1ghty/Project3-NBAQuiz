@@ -57,7 +57,7 @@ _____________________________________________________________________________
 
 ## Audience:
 - This game is for everyone, since the given topic can be studied in the game. 
-- I suppose it is more fun for sports or specifically for people interested in basketball.   
+- I suppose it is more fun for people interested in sports, specifically basketball.   
 _____________________________________________________________________________ 
 ### Design and UX
 ## How to play:   
@@ -65,6 +65,7 @@ _____________________________________________________________________________
 - try different difficulty levels
 - 3 different game lenghts to choose from
 - answer the questions and see how many you can get correct
+- study for the game in the provided section
 _____________________________________________________________________________  
 ## Colour Scheme
 - I used termcolor to print text in different colors: red, blue, green. 
