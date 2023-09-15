@@ -63,7 +63,7 @@ def home_screen():
     print(' ')
 
     choice = input('    Pick x, y or z:\n')
-    choice = choice.lower().replace(" ", "")
+    choice = choice.lower().replace(' ', '')
     if choice == 'x':
         time.sleep(0.5)
         play_game()
@@ -81,15 +81,49 @@ def home_screen():
 def display_data():
     """
     display the data questions will be asked about
+     data is displayed depending on the three difficulty options
     """
     cls()
     cosmetics.art_2()
-    print('    Here you can study the material the questions are about:')
-    print(' ')
+    cosmetics.print_red(
+        '    Here you can study the material the questions are about:'
+    )
+    cosmetics.print_green(
+        '    Choose one of the difficulty levels to study for: '
+    )
 
-    data_rows = wsheet.get_all_values()
-    for row in data_rows:
-        print(row)
+    dif_string = input('    (1) Rookie (2) Amateur (3) Pro\n')
+    dif_string = dif_string.lower().replace(' ', '')
+
+    data_rows_rookie = wsheet.get('A40:E57')
+    data_rows_amateur = wsheet.get('A21:E39')
+    data_rows_pro = wsheet.get('A2:E20')
+
+    if dif_string == 'rookie':
+        cls()
+        cosmetics.print_green(
+            "Year, NBA Champion, Result, MVP Name, MVP_position"
+        )
+        for row in data_rows_rookie:
+            print(row)
+    elif dif_string == 'amateur':
+        cls()
+        cosmetics.print_green(
+            "Year, NBA Champion, Result, MVP Name, MVP_position"
+        )
+        for row in data_rows_amateur:
+            print(row)
+    elif dif_string == 'pro':
+        cls()
+        cosmetics.print_green(
+            "Year, NBA Champion, Result, MVP Name, MVP_position"
+        )
+        for row in data_rows_pro:
+            print(row)
+    else:
+        cosmetics.print_red('    Your input is not valid. Try again')
+        time.sleep(1)
+        display_data()
 
     ready_loop()
 
