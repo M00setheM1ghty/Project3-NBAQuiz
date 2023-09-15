@@ -227,13 +227,13 @@ def ask_questions(question_index):
     creating and displaying the questions with the provided list
     """
     cls()
-    cosmetics.art_1()
     correct_answer_amount = 0
     answer_list = wsheet.row_values(question_index)
     question_list = question_sheet.col_values(1)
     year = answer_list[0]
 
     for count, question in enumerate(question_list, start=1):
+        cosmetics.art_1()
         print(' ')
         answer = str(input(
             f'    {question}' +
@@ -244,11 +244,15 @@ def ask_questions(question_index):
         if answer == correct_answer:
             cosmetics.print_green('    Correct!\n')
             correct_answer_amount += 1
+            time.sleep(1)
+            cls()
         elif answer != correct_answer:
             cosmetics.print_red('    False!')
             cosmetics.print_green(
                 f'    Correct Answer: {answer_list[count]}\n'
             )
+            time.sleep(1)
+            cls()
         else:
             home_screen()
     return correct_answer_amount
