@@ -128,7 +128,9 @@ ____________________________________________________________________________
 
 ### Unfixed Bugs
 
- - Sometimes when choosing the question amount in game_settings() the program throws a parsing Error. I could not find the reason why. Also it rarely happens. I go around it by having a loop in place that restarts the game at a specific point if it crashes.  
+ - cls() does not clear the whole input. it only clears what is currently on the screen. The remainder can be seen when scrolling up. This is a known issue but I could not find a fix that works in this terminal setup. -> e.g on the study section if an invalid input is given the content is larger then the screen size.
+ - Sometimes when choosing the question amount in game_settings() the program throws a parsing Error. I could not find the reason why. Also it rarely happens. I go around it by having a loop in place that restarts the game at a specific point if it crashes.
+
 
 ### Responsiveness and Further Testing
 

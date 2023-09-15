@@ -84,6 +84,7 @@ def display_data():
      data is displayed depending on the three difficulty options
     """
     cls()
+    cosmetics.art_2()
     cosmetics.print_red(
         '    Here you can study the material the questions are about:'
     )
